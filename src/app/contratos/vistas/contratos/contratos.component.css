@@ -1,0 +1,33 @@
+.float {
+  padding: 30px;
+  display: block;
+  position: fixed;
+  float: right;
+  bottom: 0px;
+  right: 5px;
+}
+
+.container {
+  height: calc(100vh - 60px);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.formulario{
+ height: 470px;
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ grid-column-gap: 10px;
+}
+.input{
+    display: flex;
+    flex-direction: column;   
+}
+
+.upload{
+  height: 470px;
+}
+
+.select{
+width: 100%;
+}

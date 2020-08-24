@@ -1,0 +1,33 @@
+div .p-toolbar .p-component{
+    padding: 10px !important;
+}
+
+h2{
+    font-weight : 200;
+}
+
+.menuitems{
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+}
+
+.item{
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    cursor: pointer;
+    
+}
+.item:hover{
+   background-color: #e2e2e2;
+   border-radius: 0 20px 20px 0;
+}
+
+.icon{
+    margin-right: 10px;
+    font-size: 25px;
+}
+

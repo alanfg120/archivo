@@ -1,0 +1,32 @@
+<p-toolbar>
+  <div class="p-toolbar-group-left">
+    <button
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-bars"
+      class="p-button-rounded p-button-text"
+      (click)="display = true"
+    ></button>
+  </div>
+
+  <div class="p-toolbar-group-right">
+    <button
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-power-off"
+      class="p-button-rounded p-button-text"
+    ></button>
+  </div>
+</p-toolbar>
+<p-sidebar [(visible)]="display" modal="false">
+  <h2>Menu</h2>
+  <div class="menuitems">
+    <div class="item" routerLink="contratos" (click)="display = false">
+        <i class="pi pi-file icon"></i>
+        <span>Contratos</span>
+    </div>   
+  </div>
+</p-sidebar>
+<router-outlet></router-outlet>

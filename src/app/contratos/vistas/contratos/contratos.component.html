@@ -1,0 +1,130 @@
+<div class="container">
+  <h1>Tabla</h1>
+</div>
+
+<div class="float">
+  <button
+    pButton
+    pRipple
+    type="button"
+    icon="pi pi-plus"
+    class="p-button-rounded p-button-outlined p-button-lg"
+    (click)="dialog = !dialog"
+  ></button>
+</div>
+
+<p-dialog
+  header="Agrege un Contrato"
+  [(visible)]="dialog"
+  [modal]="true"
+  [style]="{ width: '40vw' }"
+  [baseZIndex]="10000"
+  [draggable]="false"
+  [resizable]="false"
+  [maximizable]="true"
+>
+  <p-tabView>
+    <p-tabPanel header="Datos del Contrato">
+      <form
+        #formpcontrato="ngForm"
+        (ngSubmit)="addContrato(formpcontrato)"
+        class="formulario"
+      >
+        <div class="p-field input">
+          <label for="icon">Fecha del Contrato</label>
+          <p-calendar
+            [showIcon]="true"
+            inputId="icon"
+            [style]="{ width: '100%' }"
+            inputId="touchui"
+            [monthNavigator]="true"
+            [yearNavigator]="true"
+            yearRange="1900:2030"
+            [touchUI]="true"
+          ></p-calendar>
+        </div>
+        <div class="p-field input">
+          <label for="codigo">Codigo del contrato</label>
+          <input type="text" pInputText name="codigo" />
+        </div>
+        <div class="p-field input">
+          <label for="contratista">Nombre del contratista</label>
+          <input type="text" pInputText name="contratista" />
+        </div>
+        <div class="p-field input">
+          <label for="nit">Nit o cedula del contratista</label>
+          <input type="text" pInputText name="nit" />
+        </div>
+
+        <div class="p-field input">
+          <label for="representante">Nombre del representante legal</label>
+          <input type="text" pInputText name="representante" />
+        </div>
+        <div class="p-field input select">
+          <label for="representante">Selecione un tipo de contrato</label>
+          <p-dropdown
+            [style]="{ width: '100%' }"
+            options="['hola']"
+            optionLabel="name"
+            [showClear]="true"
+          ></p-dropdown>
+        </div>
+
+        <div class="p-field input">
+          <label for="nitrepresentante"
+            >Nit o cedula del representante legal</label
+          >
+          <input type="text" pInputText name="nitrepresentante" />
+        </div>
+        <div class="p-field input">
+          <label for="textarea">Objeto del contrato</label>
+          <textarea
+            rows="4"
+            cols="20"
+            pInputTextarea
+            autoResize="autoResize"
+          ></textarea>
+        </div>
+      </form>
+    </p-tabPanel>
+    <p-tabPanel header="Subir Archivo">
+      <div class="upload">
+        <p-fileUpload
+          class="fileupload"
+          name="demo[]"
+          url="./upload.php"
+          (onUpload)="onUpload($event)"
+          multiple="multiple"
+          accept="application/pdf"
+          maxFileSize="1000000"
+          chooseLabel="Buscar Archivo"
+          customUpload="true"
+          auto="true"
+        >
+          <ng-template pTemplate="content">
+            <ul *ngIf="uploadedFiles.length">
+              <li *ngFor="let file of uploadedFiles">{{ file.size }} bytes</li>
+            </ul>
+          </ng-template>
+        </p-fileUpload>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="Archivos">
+      <div class="upload"></div>
+    </p-tabPanel>
+  </p-tabView>
+
+  <ng-template pTemplate="footer">
+    <p-button
+      icon="pi pi-check"
+      (click)="dialog = false"
+      label="Guardar"
+      class="p-button-text"
+    ></p-button>
+    <p-button
+      icon="pi pi-times"
+      (click)="dialog = false"
+      label="Cancelar"
+    ></p-button>
+  </ng-template>
+</p-dialog>
